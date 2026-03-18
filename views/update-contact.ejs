@@ -1,66 +1,163 @@
-<%- include('partials/header.ejs')  %> 
+<%- include('partials/header.ejs') %>
 
-    <!-- content -->
-    <main class="py-5">
-      <div class="container">
-        <div class="row justify-content-md-center">
-          <div class="col-md-8">
-            <div class="card">
-              <div class="card-header card-title">
-                <strong>Update Contact</strong>
-              </div>     
-              <form action="/update-contact/<%= contact._id %>" method="post">     
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group row">
-                      <label for="first_name" class="col-md-3 col-form-label">First Name</label>
-                      <div class="col-md-9">
-                        <input type="text" value="<%= contact.first_name %>" name="first_name" id="first_name" class="form-control">
-                      </div>
-                    </div>
+<main class="ca-page">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-7">
 
-                    <div class="form-group row">
-                      <label for="last_name" class="col-md-3 col-form-label">Last Name</label>
-                      <div class="col-md-9">
-                        <input type="text" value="<%= contact.last_name %>" name="last_name" id="last_name" class="form-control">
-                      </div>
-                    </div>
+        <!-- PAGE HEADER -->
+        <div class="mb-4" style="animation: fadeUp 0.35s cubic-bezier(0.22,1,0.36,1) both;">
+          <div class="ca-badge">✎ Editing</div>
+          <h1 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.4rem); font-weight:900; color:var(--text-light); letter-spacing:-0.02em; margin:0 0 0.25rem;">
+            Update Contact
+          </h1>
+          <p style="font-family:'DM Sans',sans-serif; font-size:0.875rem; color:var(--text-soft); margin:0;">
+            Edit the details below and save your changes
+          </p>
+        </div>
 
-                    <div class="form-group row">
-                      <label for="email" class="col-md-3 col-form-label">Email</label>
-                      <div class="col-md-9">
-                        <input type="text" value="<%= contact.email %>" name="email" id="email" class="form-control">
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
-                      <label for="phone" class="col-md-3 col-form-label">Phone</label>
-                      <div class="col-md-9">
-                        <input type="text" value="<%= contact.phone %>" name="phone" id="phone" class="form-control">
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
-                      <label for="name" class="col-md-3 col-form-label">Address</label>
-                      <div class="col-md-9">
-                        <textarea name="address" id="address" rows="3" class="form-control"><%= contact.address %></textarea>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="form-group row mb-0">
-                      <div class="col-md-9 offset-md-3">
-                          <button type="submit" class="btn btn-primary">Save</button>
-                          <a href="/" class="btn btn-outline-secondary">Cancel</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </form> 
+        <!-- CARD -->
+        <div class="ca-card">
+          <div class="ca-card-header">
+            <h2 class="ca-card-title">
+              <i class="fa fa-edit" style="color:var(--sage); margin-right:0.5rem;"></i>
+              <%= contact.first_name %> <%= contact.last_name %>
+            </h2>
+            <div style="
+              width:40px; height:40px; border-radius:50%;
+              background:rgba(138,144,96,0.15);
+              border:1.5px solid var(--olive);
+              display:flex; align-items:center; justify-content:center;
+              font-family:'Playfair Display',serif;
+              font-weight:700; font-size:1rem; color:var(--olive);
+            ">
+              <%= contact.first_name.charAt(0).toUpperCase() %>
             </div>
           </div>
+
+          <form action="/update-contact/<%= contact._id %>" method="post">
+            <div style="padding: 1.75rem;">
+
+              <!-- First Name -->
+              <div class="mb-4">
+                <label for="first_name" class="ca-form-label">
+                  <i class="fa fa-user" style="margin-right:5px; color:var(--tan);"></i> First Name
+                </label>
+                <input
+                  type="text"
+                  name="first_name"
+                  id="first_name"
+                  value="<%= contact.first_name %>"
+                  class="form-control ca-form-control <%= errors.first_name ? 'ca-input-error' : '' %>"
+                  placeholder="Enter first name..."
+                />
+                <% if(errors.first_name){ %>
+                  <div class="ca-error-msg-inline">
+                    <i class="fa fa-exclamation-circle"></i> <%= errors.first_name %>
+                  </div>
+                <% } %>
+              </div>
+
+              <!-- Last Name -->
+              <div class="mb-4">
+                <label for="last_name" class="ca-form-label">
+                  <i class="fa fa-user" style="margin-right:5px; color:var(--tan);"></i> Last Name
+                </label>
+                <input
+                  type="text"
+                  name="last_name"
+                  id="last_name"
+                  value="<%= contact.last_name %>"
+                  class="form-control ca-form-control <%= errors.last_name ? 'ca-input-error' : '' %>"
+                  placeholder="Enter last name..."
+                />
+                <% if(errors.last_name){ %>
+                  <div class="ca-error-msg-inline">
+                    <i class="fa fa-exclamation-circle"></i> <%= errors.last_name %>
+                  </div>
+                <% } %>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-4">
+                <label for="email" class="ca-form-label">
+                  <i class="fa fa-envelope" style="margin-right:5px; color:var(--tan);"></i> Email
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  value="<%= contact.email %>"
+                  class="form-control ca-form-control <%= errors.email ? 'ca-input-error' : '' %>"
+                  placeholder="Enter email address..."
+                />
+                <% if(errors.email){ %>
+                  <div class="ca-error-msg-inline">
+                    <i class="fa fa-exclamation-circle"></i> <%= errors.email %>
+                  </div>
+                <% } %>
+              </div>
+
+              <!-- Phone -->
+              <div class="mb-4">
+                <label for="phone" class="ca-form-label">
+                  <i class="fa fa-phone" style="margin-right:5px; color:var(--tan);"></i> Phone
+                </label>
+                <input
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  value="<%= contact.phone %>"
+                  class="form-control ca-form-control <%= errors.phone ? 'ca-input-error' : '' %>"
+                  placeholder="Enter phone number..."
+                />
+                <% if(errors.phone){ %>
+                  <div class="ca-error-msg-inline">
+                    <i class="fa fa-exclamation-circle"></i> <%= errors.phone %>
+                  </div>
+                <% } %>
+              </div>
+
+              <!-- Address -->
+              <div class="mb-4">
+                <label for="address" class="ca-form-label">
+                  <i class="fa fa-map-marker" style="margin-right:5px; color:var(--tan);"></i> Address
+                  <span style="color:var(--text-soft); font-size:0.7rem; text-transform:none; letter-spacing:0; margin-left:6px;">(optional)</span>
+                </label>
+                <textarea
+                  name="address"
+                  id="address"
+                  rows="3"
+                  class="form-control ca-form-control <%= errors.address ? 'ca-input-error' : '' %>"
+                  placeholder="Enter address..."
+                ><%= contact.address %></textarea>
+                <% if(errors.address){ %>
+                  <div class="ca-error-msg-inline">
+                    <i class="fa fa-exclamation-circle"></i> <%= errors.address %>
+                  </div>
+                <% } %>
+              </div>
+
+              <!-- DIVIDER -->
+              <div style="height:1px; background:var(--border); margin-bottom:1.5rem;"></div>
+
+              <!-- BUTTONS -->
+              <div class="d-flex gap-3 flex-wrap">
+                <button type="submit" class="ca-btn-primary">
+                  <i class="fa fa-save"></i> Save Changes
+                </button>
+                <a href="/" class="ca-btn-cancel">
+                  <i class="fa fa-times"></i> Cancel
+                </a>
+              </div>
+
+            </div>
+          </form>
         </div>
+
       </div>
-    </main>
-    <%- include('partials/footer.ejs')  %> 
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer.ejs') %>

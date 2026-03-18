@@ -1,26 +1,48 @@
-<%- include('partials/header.ejs')  %> 
+<%- include('partials/header.ejs') %>
 
-    <!-- content -->
-    <main class="py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-                <div class="card-header card-title">
-                  <div class="d-flex align-items-center">
-                    <h2 class="mb-0">500 Error</h2>
-                  </div>
-                </div>
-              <div class="card-body">
-               <% if(message){ %> 
-                <h1><%= message  %> </h1>
-               <% }else{ %> 
-                <h1>Internal Server Error.</h1>
-               <% } %> 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-    <%- include('partials/footer.ejs')  %> 
+<main class="ca-error-page">
+  <div style="animation: fadeUp 0.45s cubic-bezier(0.22,1,0.36,1) both;">
+
+    <!-- BIG 500 -->
+    <div class="ca-error-code" style="color: var(--dusty-rose);">500</div>
+
+    <!-- DIVIDER LINE -->
+    <div style="
+      width: 60px;
+      height: 2px;
+      background: var(--dusty-rose);
+      margin: 0 auto 1.25rem;
+      border-radius: 2px;
+    "></div>
+
+    <!-- MESSAGE -->
+    <% if(message){ %>
+      <p class="ca-error-msg"><%= message %></p>
+    <% } else { %>
+      <p class="ca-error-msg">Something went wrong on our end.</p>
+    <% } %>
+
+    <!-- SUBTEXT -->
+    <p style="
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      margin-bottom: 2rem;
+    ">
+      This is a server error — try refreshing or come back in a moment.
+    </p>
+
+    <!-- BUTTONS -->
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="/" class="ca-btn-primary">
+        <i class="fa fa-home"></i> Back to Home
+      </a>
+      <a href="javascript:location.reload()" class="ca-btn-cancel">
+        <i class="fa fa-refresh"></i> Try Again
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<%- include('partials/footer.ejs') %>

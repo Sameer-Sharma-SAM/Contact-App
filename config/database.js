@@ -5,6 +5,7 @@ dotenv.config()
 // Database Connection
 export const connectDB = () => {
   mongoose.connect(process.env.MONGO_URL)
-.then(() => console.log("Database Connected."))
+    .then(() => console.log("Database Connected."))
+    .catch(err => console.log(err))
 }
 

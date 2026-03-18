@@ -1,24 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>My Contact</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>My Contact</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
-    <!-- Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/bootstrap.min.css" rel="stylesheet">
-    <link href="/custom.css" rel="stylesheet">
-  </head>
-  <body>
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
-        <a class="navbar-brand text-uppercase" href="/">            
-            <strong>Contact</strong> App
-        </a>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="/bootstrap.min.css" rel="stylesheet">
+  <!-- Our Custom CSS -->
+  <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg ca-navbar">
+    <div class="container">
+      <a class="navbar-brand ca-brand" href="/">
+        Contact<span>App</span>
+      </a>
+      <button class="navbar-toggler ca-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link ca-nav-link" href="/">
+              <i class="fa fa-address-book"></i> All Contacts
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link ca-nav-link" href="/add-contact">
+              <i class="fa fa-plus"></i> Add New
+            </a>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
